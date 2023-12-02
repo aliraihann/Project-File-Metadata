@@ -56,7 +56,7 @@ let File = mongoose.model('File', fileSchema);
 
 // END POINT ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-app.post('/api/fileanalyse', upload.single("upfile"), async function(req, res) {
+app.post('/api/fileanalyse', upload.single("upfile"), function(req, res) {
   try {
     let fieldname = req.file.fieldname;
     let encoding = req.file.encoding;
