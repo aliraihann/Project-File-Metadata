@@ -58,13 +58,13 @@ let File = mongoose.model('File', fileSchema);
 
 app.post('/api/fileanalyse', upload.single("upfile"), async function(req, res) {
   try {
-    let fieldname = req.file["fieldname"];
-    let encoding = req.file["encoding"];
-    let type = req.file["mimetype"];
-    let destination = req.file["destination"];
-    let filename = req.file["originalname"];
-    let path = req.file["path"];
-    let size = req.file["size"]; 
+    let fieldname = req.file.fieldname;
+    let encoding = req.file.encoding;
+    let type = req.file.mimetype;
+    let destination = req.file.destination;
+    let filename = req.file.originalname;
+    let path = req.file.path;
+    let size = req.file.size; 
 
     File.create({
       fieldname: fieldname,
@@ -76,7 +76,7 @@ app.post('/api/fileanalyse', upload.single("upfile"), async function(req, res) {
       size: size,
     })
 
-    res.json({
+    return res.json({
       name: filename,
       type: type,
       size: size,
